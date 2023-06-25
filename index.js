@@ -133,7 +133,17 @@ function showModal(url) {
     if (this.readyState == 4) {
       if(this.status == 200) {
         let response = JSON.parse(this.responseText);
-        console.log(response)
+        updateModal(
+          response.title,
+          response.image_url,
+          response.genres,
+          response.date_published,
+          response.rated,
+          response.imdb_score,
+          response.directors,
+          response.actors,
+          response
+          )
       } else {
         console.error("Error " + this.status);
       }
@@ -143,6 +153,9 @@ function showModal(url) {
   xhttp.send();
 }
 
+function updateModal(title, image, genre, date, rate, score, realisateur, actors, duree, pays, box, resume){
+
+}
 
 
 
@@ -173,9 +186,6 @@ function createModal(modal){
   });
 }
 
-function updateModal(title, image, genre, date, rate, score, realisateur, actors, duree, pays, box, resume){
-
-}
 
 span.onclick = function() {
     modal.style.display = "none";
