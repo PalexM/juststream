@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="ISO-8859-1">
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<div class="navbar">
+  <a class="logo-link" href="#home"><img id="logo" src="src/logo.png" alt="Logo"></a>
+  <a class="nav-link" href="#home">Home</a>
+  <a class="nav-link" href="#films">Films</a>
+  <a class="nav-link" href="#series">Series</a>
+  <div class="search">
+    <input type="text" placeholder="Search..">
+  </div>
+</div>
+
+
+
+<div class="best-movie" id="bestMovieDiv">
+  <div class="text-content" id="textContentDiv">
+    <h1 id="nameTitle"></h1>  
+    <h2 id="seasonDetailsTitle"></h2>
+    <p id="descriptionText">
+    </p>
+  </div>
+  <a class="play-link" href=""><img id="play-btn" src="src/play.png" alt="play"></a>
+</div>
+
+
+
+
+
+<div class="title-container">
+    <h1 class="centered-title">Categoria 1</h1>
+</div>
+
+<div class="carousel">
+    <button id="prevBtn-cat1" class="carousel-button">&lt;</button>
+    <div id="scrollContainer-cat1" class="scroll-container">
+      
+      <!-- Poți adăuga mai multe elemente de carusel aici -->
+    </div>
+    <button id="nextBtn-cat1" class="carousel-button">&gt;</button>
+  </div>
+
+<div class="title-container">
+    <h1 class="centered-title">Categoria 2</h1>
+</div>
+
+<div class="carousel">
+    <button id="prevBtn-cat2" class="carousel-button">&lt;</button>
+    <div id="scrollContainer-cat2" class="scroll-container">
+      
+      <!-- Poți adăuga mai multe elemente de carusel aici -->
+    </div>
+    <button id="nextBtn-cat2" class="carousel-button">&gt;</button>
+  </div>
+
+  <div class="title-container">
+    <h1 class="centered-title">Categoria 3</h1>
+</div>
+
+<div class="carousel">
+    <button id="prevBtn-cat3" class="carousel-button">&lt;</button>
+    <div id="scrollContainer-cat3" class="scroll-container">
+      
+      <!-- Poți adăuga mai multe elemente de carusel aici -->
+    </div>
+    <button id="nextBtn-cat3" class="carousel-button">&gt;</button>
+</div>
+
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Acesta este un popup modal!</p>
+  </div>
+</div>
+  
+<script src="index.js"></script>
+</body>
+</html>
