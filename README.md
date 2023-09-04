@@ -18,4 +18,4 @@ Pour installer les dépendances et lancer le serveur, suivez les instructions du
 - CSS
 
 ## Auteur
-[POP ALEXANDRU]
+POP ALEXANDRU
