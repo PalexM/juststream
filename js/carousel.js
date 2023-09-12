@@ -84,7 +84,3 @@ function addScrollFunctionality(containerId, prevButtonId, nextButtonId) {
 
 // ******************** End Carousel ***************************//
 
-
-function print(msg) {
-  console.log(msg)
-}
