@@ -1,4 +1,6 @@
+
 async function createModal(url) {
+
   var modal = document.getElementById("modal");
   var modal_content = document.getElementById("modal_content")
   modal.style.display = "block";
@@ -6,21 +8,23 @@ async function createModal(url) {
   var htmlElements = [
     { tag: 'H2', id: 'modal-title'},
     { tag: 'img', id: 'modal-img'},
-    { tag: 'p', id: 'modal-genre', innerHTML : "<strong>Genre :</strong> <br>"},
-    { tag: 'p', id: 'modal-date', innerHTML : "<strong>Date :</strong> <br>"},
-    { tag: 'p', id: 'modal-rate', innerHTML : "<strong>Rate :</strong> <br>"},
-    { tag: 'p', id: 'modal-score', innerHTML : "<strong>Score :</strong> <br>"},
-    { tag: 'p', id: 'modal-realisateur', innerHTML : "<strong>Realisateur :</strong> <br>"},
-    { tag: 'p', id: 'modal-actors', innerHTML : "<strong>Acteurs :</strong> <br>"},
-    { tag: 'p', id: 'modal-duree', innerHTML : "<strong>Duree :</strong> <br>"},
-    { tag: 'p', id: 'modal-pays', innerHTML : "<strong>Pays :</strong> <br>"},
-    { tag: 'p', id: 'modal-box', innerHTML : "<strong>Box :</strong> <br>"},
-    { tag: 'p', id: 'modal-resume', innerHTML : "<strong>Description :</strong> <br>"},
+    { tag: 'p', id: 'modal-genre', innerHTML : "<strong>Genre :</strong> "},
+    { tag: 'p', id: 'modal-date', innerHTML : "<strong>Date :</strong> "},
+    { tag: 'p', id: 'modal-rate', innerHTML : "<strong>Rate :</strong> "},
+    { tag: 'p', id: 'modal-score', innerHTML : "<strong>Score :</strong> "},
+    { tag: 'p', id: 'modal-realisateur', innerHTML : "<strong>Realisateur :</strong> "},
+    { tag: 'p', id: 'modal-actors', innerHTML : "<strong>Acteurs :</strong> "},
+    { tag: 'p', id: 'modal-duree', innerHTML : "<strong>Duree :</strong> "},
+    { tag: 'p', id: 'modal-pays', innerHTML : "<strong>Pays :</strong> "},
+    { tag: 'p', id: 'modal-box', innerHTML : "<strong>Box :</strong> "},
+    { tag: 'p', id: 'modal-resume', innerHTML : "<strong>Description :</strong> "},
   ];
-  htmlElements.forEach(function (element) {
-    var newElement = Object.assign(document.createElement(element.tag), element);
-    modal_content.appendChild(newElement);
-  });
+
+    htmlElements.forEach(function (element) {
+      var newElement = Object.assign(document.createElement(element.tag), element);
+      modal_content.appendChild(newElement);
+    });
+
 
   try {
     var film = await getFilmsDetails(url)
@@ -44,13 +48,23 @@ async function createModal(url) {
 
 }
 
-var span = document.getElementsByClassName("close")[0];
-span.onclick = function () {
-  modal.style.display = "none";
-}
-
-window.onclick = function (event) {
-  if (event.target == modal) {
+  var span = document.getElementsByClassName("close")[0];
+  span.onclick = function () {
     modal.style.display = "none";
+    clearModalContent()
+
   }
-}
+
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+      clearModalContent()
+    }
+  }
+
+  function clearModalContent(){
+    var modal_content = document.getElementById("modal_content")
+    while (modal_content.firstChild) {
+      modal_content.removeChild(modal_content.firstChild);
+    }
+  }
