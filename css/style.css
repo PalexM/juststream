@@ -2,6 +2,9 @@ html,
 body {
     margin: 0;
     padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
 }
 
 #logo {
@@ -57,28 +60,29 @@ body {
     padding: 15px;
     color: white;
     margin-top: 30px;
-    height: 350px;
+    height: 300px;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .text-content {
-    width: 50%;
-    margin-top: 50px;
-}
-
-.play-link {
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 400px;
 }
 
 #play-btn {
-    height: 150px;
-    width: 150px;
+    height: 80px;
+    width: 80px;
+    margin-top: -80vh;
+    margin-left: 70%;
 }
+#best-description{
+    width: 300px;
+    white-space: normal;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin-top: 0px;
 
+}
 .title-container {
     text-align: center;
     margin-top: 30px;

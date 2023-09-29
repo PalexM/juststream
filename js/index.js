@@ -101,8 +101,6 @@ async function bestMovieSection(url) {
     const bestMovieDiv = document.getElementById('bestMovieDiv');
     const nameTitle = document.getElementById('nameTitle');
     const seasonDetailsTitle = document.getElementById('seasonDetailsTitle');
-    const descriptionText = document.getElementById('descriptionText');
-    const link = document.querySelector("#bestMovieDiv > a")
     try {
         var movie = await getFilmsDetails(url)
     }
@@ -110,14 +108,25 @@ async function bestMovieSection(url) {
         return alert('Il y a une erreur avec ce url =>' + error)
     }
 
-    link.addEventListener("click", function () {
-        createModal(url)
-    });
+
 
     bestMovieDiv.style.backgroundImage = `url(${movie['image']})`
     bestMovieDiv.style.backgroundSize = "600px 400px"
     bestMovieDiv.style.backgroundPosition = "center"
     nameTitle.textContent = movie['title']
     seasonDetailsTitle.textContent = movie['date']
-    descriptionText.textContent = movie['description']
+
+    bestMovieDiv.addEventListener("click", function () {
+        createModal(url)
+    });
 }
+
+
+function showHideText() {
+    var textElement = document.getElementById("best-description");
+    if (textElement.style.display === "none" || textElement.style.display === "") {
+      textElement.style.display = "block";
+    } else {
+      textElement.style.display = "none";
+    }
+  }
