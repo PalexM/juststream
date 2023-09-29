@@ -39,12 +39,12 @@ async function callApiAndSortResult(url, limit) {
 
 
 // Best Movie
-callApiAndSortResult('http://mrpop.work:8000/api/v1/titles/?imdb_score=9.4', 1).then(bestMovies => {
+callApiAndSortResult('http://mrpop.work:8000/api/v1/titles/?&imdb_score_min=9.4', 1).then(bestMovies => {
     bestMovieSection(bestMovies[0].url)
 })
 
-// Bests Comedy Movies  
-callApiAndSortResult('http://mrpop.work:8000/api/v1/titles/?imdb_score=8.5&genre=Comedy', 7).then(actionMovies => {
+// Bests Movies 
+callApiAndSortResult('http://mrpop.work:8000/api/v1/titles/?&imdb_score_min=9.3', 7).then(actionMovies => {
     var movies = [];
     for (var i = 0; i < actionMovies.length; i++) {
         var movie = {
@@ -61,8 +61,8 @@ callApiAndSortResult('http://mrpop.work:8000/api/v1/titles/?imdb_score=8.5&genre
     addScrollFunctionality('scrollContainer-cat1', 'prevBtn-cat1', 'nextBtn-cat1');
 })
 
-// Bests Animations Movies 
-callApiAndSortResult('http://mrpop.work:8000/api/v1/titles/?imdb_score=8&genre=Animation', 7).then(animationMovies => {
+// Bests Animations 
+callApiAndSortResult('http://mrpop.work:8000/api/v1/titles/?&imdb_score_min=8.5&genre=Animation', 7).then(animationMovies => {
     var movies = [];
     for (var i = 0; i < animationMovies.length; i++) {
         var movie = {
@@ -80,8 +80,8 @@ callApiAndSortResult('http://mrpop.work:8000/api/v1/titles/?imdb_score=8&genre=A
 })
 
 
-// Bests Comedy Mystery 
-callApiAndSortResult('http://mrpop.work:8000/api/v1/titles/?imdb_score=8&genre=Mystery', 7).then(comedyMovies => {
+// Bests Comedy
+callApiAndSortResult('http://mrpop.work:8000/api/v1/titles/?&imdb_score_min=8.5&genre=Comedy', 7).then(comedyMovies => {
     var movies = [];
     for (var i = 0; i < comedyMovies.length; i++) {
         var movie = {
