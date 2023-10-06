@@ -39,24 +39,23 @@ async function callApiAndSortResult(url, limit) {
 
 
 // Best Movie
-callApiAndSortResult('http://mrpop.work:8000/api/v1/titles/?&imdb_score_min=9.4', 1).then(bestMovies => {
-    bestMovieSection(bestMovies[0].url)
+callApiAndSortResult('http://mrpop.work:8000/api/v1/titles/?&imdb_score_min=9.4', 1).then(bestMovie => {
+    bestMovieSection(bestMovie[0].url)
 })
 
 // Bests Movies 
-callApiAndSortResult('http://mrpop.work:8000/api/v1/titles/?&imdb_score_min=9.3', 7).then(actionMovies => {
+callApiAndSortResult('http://mrpop.work:8000/api/v1/titles/?&imdb_score_min=9.3', 7).then(bestsMovies => {
     var movies = [];
-    for (var i = 0; i < actionMovies.length; i++) {
+    for (var i = 0; i < bestsMovies.length; i++) {
         var movie = {
-            imageUrl: actionMovies[i].image_url,
-            title: actionMovies[i].imdb_score,
-            location: actionMovies[i].title,
-            duration: actionMovies[i].year,
-            url: actionMovies[i].url
+            imageUrl: bestsMovies[i].image_url,
+            title: bestsMovies[i].imdb_score,
+            location: bestsMovies[i].title,
+            duration: bestsMovies[i].year,
+            url: bestsMovies[i].url
         };
         movies.push(movie);
     }
-
     buildCarousel('scrollContainer-cat1', movies);
     addScrollFunctionality('scrollContainer-cat1', 'prevBtn-cat1', 'nextBtn-cat1');
 })
@@ -97,10 +96,28 @@ callApiAndSortResult('http://mrpop.work:8000/api/v1/titles/?&imdb_score_min=8.5&
     addScrollFunctionality('scrollContainer-cat3', 'prevBtn-cat3', 'nextBtn-cat3');
 })
 
+// Bests Action  
+callApiAndSortResult('http://mrpop.work:8000/api/v1/titles/?imdb_score=8.7&genre=Action', 7).then(actionMovies => {
+    var movies = [];
+    for (var i = 0; i < actionMovies.length; i++) {
+        var movie = {
+            imageUrl: actionMovies[i].image_url,
+            title: actionMovies[i].imdb_score,
+            location: actionMovies[i].title,
+            duration: actionMovies[i].year,
+            url: actionMovies[i].url
+        };
+        movies.push(movie);
+    }
+    buildCarousel('scrollContainer-cat4', movies);
+    addScrollFunctionality('scrollContainer-cat4', 'prevBtn-cat4', 'nextBtn-cat4');
+})
+
 async function bestMovieSection(url) {
     const bestMovieDiv = document.getElementById('bestMovieDiv');
     const nameTitle = document.getElementById('nameTitle');
     const seasonDetailsTitle = document.getElementById('seasonDetailsTitle');
+    const description = document.getElementById('best-description')
     try {
         var movie = await getFilmsDetails(url)
     }
@@ -109,7 +126,7 @@ async function bestMovieSection(url) {
     }
 
 
-
+    description.innerText = movie['description']
     bestMovieDiv.style.backgroundImage = `url(${movie['image']})`
     bestMovieDiv.style.backgroundSize = "600px 400px"
     bestMovieDiv.style.backgroundPosition = "center"
@@ -125,8 +142,8 @@ async function bestMovieSection(url) {
 function showHideText() {
     var textElement = document.getElementById("best-description");
     if (textElement.style.display === "none" || textElement.style.display === "") {
-      textElement.style.display = "block";
+        textElement.style.display = "block";
     } else {
-      textElement.style.display = "none";
+        textElement.style.display = "none";
     }
-  }
+}
